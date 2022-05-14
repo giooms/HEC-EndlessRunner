@@ -154,9 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thePlatform: {fileID: 542768098543546450, guid: 4668f548e586a414388710834512a052, type: 3}
   generationPoint: {fileID: 1953442121}
-  distanceBetween: 4
-  distanceBetweenMin: 0
-  distanceBetweenMax: 4
+  distanceBetweenMin: 1
   theObjectPools:
   - {fileID: 1035475190}
   - {fileID: 1921108803}
