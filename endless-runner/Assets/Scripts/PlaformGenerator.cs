@@ -93,7 +93,7 @@ public class PlaformGenerator : MonoBehaviour {
             }
             else
             {
-                distanceBetweenMax = Mathf.Exp(-heightChange/ (float)1.75);
+                distanceBetweenMax = Mathf.Exp(-heightChange/ (float)1.80);
             }
 
             // ********** CONDITIONS **********
