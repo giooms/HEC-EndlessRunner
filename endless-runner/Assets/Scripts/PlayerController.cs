@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     public float speedMultiplier; //multiplicateur de vitesse
 
-    public float speedIncreaseMilestone; //distance à partir de laquelle la vitesse augmente
+    public float speedIncreaseMilestone; //distance a partir de laquelle la vitesse augmente
     private float speedMilestoneCount; // compteur de distance
 
     public float jumpForce;
@@ -36,23 +36,28 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        
+    void Update()
+    {
+
         //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround); //si le cercle autour du groundcheck touche le sol alors grounded est vrai
 
-        if(transform.position.x > speedMilestoneCount)
+        if (transform.position.x > speedMilestoneCount)
         {
             speedMilestoneCount += speedIncreaseMilestone;
 
             speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
             moveSpeed = moveSpeed * speedMultiplier;
+            if(moveSpeed >= 15)
+            {
+                moveSpeed = 15;
+            }
         } //si la position x du joueur est plus grande que que le compteur de distance
-        
+
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
 
-        if(Input.touchCount > 0 || Input.GetKeyDown(KeyCode.Space))
+        if (Input.touchCount > 0 || Input.GetKeyDown(KeyCode.Space))
         {
             if (grounded)
             {
@@ -61,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         myAnimator.SetFloat("Speed", myRigidbody.velocity.x);
-        myAnimator.SetBool ("Grounded", grounded);
+        myAnimator.SetBool("Grounded", grounded);
 
     }
 }
