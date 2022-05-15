@@ -84,7 +84,6 @@ public class PlaformGenerator : MonoBehaviour {
             }
 
             // ********** CALCUL DISTANCE MAX EN FONCTION DE LA HAUTEUR **********
-
             if(platformWidths[platformSelector] == 9)
             {
                 distanceBetweenMax = Mathf.Exp(-heightChange / (float)2.10);
@@ -113,17 +112,16 @@ public class PlaformGenerator : MonoBehaviour {
             }
 
             // ********** CONTRAINTES DE DISTANCE **********
-         
             if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
                 distanceBetweenMin = 2;
             }
             else
             {
-                distanceBetweenMin = 1;
+                distanceBetweenMin = 2;
             }
 
-
+            // @THOMAS mon code bypass le tien du dessus qui fonctionnait bien dans le cadre du premier if. Faut trouver comment l'appliquer aux cas suivants. 
             GameObject Player = GameObject.Find("Player");
             PlayerController playerController = Player.GetComponent<PlayerController>();
             moveSpeed = playerController.moveSpeed;                 // Permet de recuperer la variable moveSpeed du script PlayerController.
@@ -131,12 +129,12 @@ public class PlaformGenerator : MonoBehaviour {
             // Contraintes basees sur la vitesse
             if(moveSpeed <= 11)
             {
-                distanceBetweenMin = 1;
+                distanceBetweenMin = 2;         
                 distanceBetweenMax = 4;
             }
             else if (moveSpeed > 11 && moveSpeed <= 12)
             {
-                distanceBetweenMin = 2;
+                distanceBetweenMin = 3;
                 distanceBetweenMax = 5;
             }
             else if (moveSpeed > 12 && moveSpeed <= 13.5)
@@ -146,8 +144,8 @@ public class PlaformGenerator : MonoBehaviour {
             }
             else if (moveSpeed > 13.5 && moveSpeed <= 15)
             {
-                distanceBetweenMin = 5;
-                distanceBetweenMax = 8;
+                distanceBetweenMin = 6;
+                distanceBetweenMax = 9;
             }
             else
             {
