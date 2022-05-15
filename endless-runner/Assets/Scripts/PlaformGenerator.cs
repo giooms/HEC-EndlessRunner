@@ -99,7 +99,12 @@ public class PlaformGenerator : MonoBehaviour {
 
             // ********** CONDITIONS **********
 
-            distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme
+            GameObject Player = GameObject.Find("Player");
+            PlayerController playerController = Player.GetComponent<PlayerController>();
+            moveSpeed = playerController.moveSpeed;        // Permet de recuperer la variable moveSpeed du script PlayerController. Avant la 1?re plateforme pour ne pas quelle soit coll?e au start.
+
+
+            distanceBetween = (moveSpeed/10)*Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
 
             if (platformSelector == 0){     // On specifie la future position lors de la generation
 
@@ -114,43 +119,11 @@ public class PlaformGenerator : MonoBehaviour {
             // ********** CONTRAINTES DE DISTANCE **********
             if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
-                distanceBetweenMin = 2;
+                distanceBetweenMin = (float)2.5;
             }
             else
             {
                 distanceBetweenMin = 2;
-            }
-
-            // @THOMAS mon code bypass le tien du dessus qui fonctionnait bien dans le cadre du premier if. Faut trouver comment l'appliquer aux cas suivants. 
-            GameObject Player = GameObject.Find("Player");
-            PlayerController playerController = Player.GetComponent<PlayerController>();
-            moveSpeed = playerController.moveSpeed;                 // Permet de recuperer la variable moveSpeed du script PlayerController.
-
-            // Contraintes basees sur la vitesse
-            if(moveSpeed <= 11)
-            {
-                distanceBetweenMin = 2;         
-                distanceBetweenMax = 4;
-            }
-            else if (moveSpeed > 11 && moveSpeed <= 12)
-            {
-                distanceBetweenMin = 3;
-                distanceBetweenMax = 5;
-            }
-            else if (moveSpeed > 12 && moveSpeed <= 13.5)
-            {
-                distanceBetweenMin = 4;
-                distanceBetweenMax = 7;
-            }
-            else if (moveSpeed > 13.5 && moveSpeed <= 15)
-            {
-                distanceBetweenMin = 6;
-                distanceBetweenMax = 9;
-            }
-            else
-            {
-                distanceBetweenMin = 6;
-                distanceBetweenMax = 10;
             }
 
             // ********** GENERATION **********
