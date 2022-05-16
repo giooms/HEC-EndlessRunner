@@ -12,11 +12,12 @@ public class PlaformGenerator : MonoBehaviour {
     private float distanceBetweenMin;
     private float distanceBetweenMax;
 
-    public ObjectPooler[] theObjectPools = null;   // on cr?e un array via les []
+    public ObjectPooler[] theObjectPools = null;   // on cree un array via les []
 
     // public GameObject[] thePlatforms; 
     private int platformSelector;
     private float[] platformWidths;
+    private int previousPlatform;
 
     private float minHeight;
     public Transform maxHeightPoint;
@@ -24,7 +25,7 @@ public class PlaformGenerator : MonoBehaviour {
     public float maxHeightChange;
     private float heightChange;
 
-    private int lastPlatform = 0;   // variable temporelle pour conna?tre derni?re plateforme 
+    private int lastPlatform = 0;   // variable temporelle pour connaitre derniere plateforme 
     private bool firstRun = true;
 
     private float moveSpeed;
@@ -58,7 +59,7 @@ public class PlaformGenerator : MonoBehaviour {
 
         if (transform.position.x < generationPoint.position.x) {        // On s'assure que la generation se fasse plus loin
 
-            // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
+    // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
             if (firstRun)   // Pour le premier frame pas besoin de s'inquieter de la plateforme precedente      
             {
                 firstRun = false;
@@ -98,13 +99,44 @@ public class PlaformGenerator : MonoBehaviour {
             }
 
             // ********** CONDITIONS **********
-
             GameObject Player = GameObject.Find("Player");
             PlayerController playerController = Player.GetComponent<PlayerController>();
             moveSpeed = playerController.moveSpeed;        // Permet de recuperer la variable moveSpeed du script PlayerController. Avant la 1?re plateforme pour ne pas quelle soit coll?e au start.
 
+            if (moveSpeed <= 12)
+            {
+                distanceBetweenMin = 2;
+                distanceBetweenMax = 4;
+            }
+            else if (moveSpeed > 12 && moveSpeed <= 13.5)
+            {
+                distanceBetweenMin = 3;
+                distanceBetweenMax = 5;
+            }
+            else if (moveSpeed > 13.5 && moveSpeed < 15)
+            {
+                distanceBetweenMin = 5;
+                distanceBetweenMax = 8;
+            }
+            else
+            {
+                distanceBetweenMin = 6;
+                distanceBetweenMax = 9;
+            }
 
-            distanceBetween = (moveSpeed/10)*Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
+            if (previousPlatform == 3)
+            {
+                distanceBetween = (moveSpeed / 10) * Random.Range(4, 6);
+            }
+            else if (platformSelector == 3)
+            {
+                distanceBetweenMin = 4;
+            }
+            else
+            {
+                distanceBetween = (moveSpeed / 10) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
+
+            }
 
             if (platformSelector == 0){     // On specifie la future position lors de la generation
 
@@ -134,6 +166,8 @@ public class PlaformGenerator : MonoBehaviour {
             newPlatform.SetActive(true);
 
             transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2), transform.position.y, transform.position.z);
+
+            previousPlatform = platformSelector;
 
         }
 
