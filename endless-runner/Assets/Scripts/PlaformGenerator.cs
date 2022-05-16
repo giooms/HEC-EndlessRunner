@@ -9,7 +9,7 @@ public class PlaformGenerator : MonoBehaviour {
     private float distanceBetween;
     private float platformWidth;
 
-    private float distanceBetweenMin;
+    private float distanceBetweenMin = 2;
     private float distanceBetweenMax;
 
     public ObjectPooler[] theObjectPools = null;   // on cree un array via les []
@@ -95,19 +95,19 @@ public class PlaformGenerator : MonoBehaviour {
             float DistanceMax(float palier) {
                 if (platformWidths[platformSelector] == 9)
                 {
-                    distanceBetweenMax = palier - ((float)0.5 * heightChange);
+                    distanceBetweenMax = 3;
                     return distanceBetweenMax;
                 }
                 else if (heightChange >= -0.5)
                 {
                     //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)2.05);
-                    distanceBetweenMax = palier - ((float)0.25 * heightChange);
+                    distanceBetweenMax = palier - ((float)0.9 * heightChange);
                     return distanceBetweenMax;
                 }
                 else
                 {
                     //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)1.80);
-                    distanceBetweenMax = palier + ((float)0.5 * heightChange);
+                    distanceBetweenMax = palier + ((float)0.25 * heightChange);
                     return distanceBetweenMax;
                 }
             }
@@ -120,8 +120,15 @@ public class PlaformGenerator : MonoBehaviour {
             {
                 /*distanceBetweenMin = 2;
                 distanceBetweenMax = 4;*/
-                DistanceMax(4);
-                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
+                if (previousPlatform == 3)
+                {
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
+                }
+                else
+                {
+                    DistanceMax(4);
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
+                }
             }
             else if (moveSpeed > 12 && moveSpeed <= 13.5)
             {
@@ -134,14 +141,14 @@ public class PlaformGenerator : MonoBehaviour {
             {
                 /*distanceBetweenMin = 5;
                 distanceBetweenMax = 8;*/
-                DistanceMax(7);
+                DistanceMax(6);
                 distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(((float)1.85 * distanceBetweenMin), distanceBetweenMax);
             }
             else
             {
                 //distanceBetweenMin = 6;
                 //distanceBetweenMax = 9;
-                DistanceMax(8);
+                DistanceMax(7);
                 distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range((2 * distanceBetweenMin), distanceBetweenMax);
             }
 
@@ -171,6 +178,20 @@ public class PlaformGenerator : MonoBehaviour {
 
             // distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
 
+            /*if (previousPlatform == 3)
+            {
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, DistanceMax(6));
+            }*/
+            /*else if (platformSelector == 3)
+            {
+                distanceBetweenMin = 4;
+            }*/
+            /*else
+            {
+                distanceBetween = (moveSpeed / 10) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
+
+            }*/
+
             if (platformSelector == 0){     // On specifie la future position lors de la generation
 
                 transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2) + distanceBetween, minHeight, transform.position.z);
@@ -181,14 +202,14 @@ public class PlaformGenerator : MonoBehaviour {
 
             }
 
-            if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
+            /*if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
                 distanceBetweenMin = distanceBetweenMax;
             }
             else
             {
                 distanceBetweenMin = 2;
-            }
+            }*/
 
             // ********** GENERATION **********
             GameObject newPlatform = theObjectPools[platformSelector].GetPooledObject();
