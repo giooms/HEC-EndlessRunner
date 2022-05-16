@@ -28,6 +28,7 @@ public class PlaformGenerator : MonoBehaviour {
     private int lastPlatform = 0;   // variable temporelle pour connaitre derniere plateforme 
     private bool firstRun = true;
 
+    private float moveSpeedInitial;
     private float moveSpeed;
 
 
@@ -59,11 +60,16 @@ public class PlaformGenerator : MonoBehaviour {
 
         if (transform.position.x < generationPoint.position.x) {        // On s'assure que la generation se fasse plus loin
 
-    // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
+            GameObject Player = GameObject.Find("Player");
+            PlayerController playerController = Player.GetComponent<PlayerController>();
+
+            // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
             if (firstRun)   // Pour le premier frame pas besoin de s'inquieter de la plateforme precedente      
             {
                 firstRun = false;
                 lastPlatform = UnityEngine.Random.Range(0, theObjectPools.Length);
+                moveSpeedInitial = playerController.moveSpeed;
+
             }
             else
             {
@@ -91,7 +97,7 @@ public class PlaformGenerator : MonoBehaviour {
             }
             else if (heightChange >= -0.5)
             {
-                distanceBetweenMax = Mathf.Exp(-heightChange/2);
+                distanceBetweenMax = Mathf.Exp(-heightChange/ (float)2.05);
             }
             else
             {
@@ -99,11 +105,10 @@ public class PlaformGenerator : MonoBehaviour {
             }
 
             // ********** CONDITIONS **********
-            GameObject Player = GameObject.Find("Player");
-            PlayerController playerController = Player.GetComponent<PlayerController>();
-            moveSpeed = playerController.moveSpeed;        // Permet de recuperer la variable moveSpeed du script PlayerController. Avant la 1?re plateforme pour ne pas quelle soit coll?e au start.
+            
+            moveSpeed = playerController.moveSpeed; // Calcul du nouveau moveSpeed
 
-            if (moveSpeed <= 12)
+            /*if (moveSpeed <= 12)
             {
                 distanceBetweenMin = 2;
                 distanceBetweenMax = 4;
@@ -126,7 +131,7 @@ public class PlaformGenerator : MonoBehaviour {
 
             if (previousPlatform == 3)
             {
-                distanceBetween = (moveSpeed / 10) * Random.Range(4, 6);
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
             }
             else if (platformSelector == 3)
             {
@@ -134,9 +139,21 @@ public class PlaformGenerator : MonoBehaviour {
             }
             else
             {
-                distanceBetween = (moveSpeed / 10) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
 
+            }*/
+
+            // ********** CONTRAINTES DE DISTANCE **********
+            /*if (previousPlatform == 3 || previousPlatform == 4)  // Contraintes pour la plateforme 3 (1x1)
+            {
+                distanceBetweenMin = (float)3;
             }
+            else
+            {
+                distanceBetweenMin = 2;
+            }*/
+
+            distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
 
             if (platformSelector == 0){     // On specifie la future position lors de la generation
 
@@ -148,10 +165,9 @@ public class PlaformGenerator : MonoBehaviour {
 
             }
 
-            // ********** CONTRAINTES DE DISTANCE **********
-            if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
+            if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
-                distanceBetweenMin = (float)2.5;
+                distanceBetweenMin = 3;
             }
             else
             {
