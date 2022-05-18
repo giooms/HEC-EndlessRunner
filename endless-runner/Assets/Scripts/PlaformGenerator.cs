@@ -9,7 +9,7 @@ public class PlaformGenerator : MonoBehaviour {
     private float distanceBetween;
     private float platformWidth;
 
-    private float distanceBetweenMin;
+    private float distanceBetweenMin = 2;
     private float distanceBetweenMax;
 
     public ObjectPooler[] theObjectPools = null;   // on cree un array via les []
@@ -28,6 +28,7 @@ public class PlaformGenerator : MonoBehaviour {
     private int lastPlatform = 0;   // variable temporelle pour connaitre derniere plateforme 
     private bool firstRun = true;
 
+    private float moveSpeedInitial;
     private float moveSpeed;
 
 
@@ -59,11 +60,16 @@ public class PlaformGenerator : MonoBehaviour {
 
         if (transform.position.x < generationPoint.position.x) {        // On s'assure que la generation se fasse plus loin
 
-    // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
+            GameObject Player = GameObject.Find("Player");
+            PlayerController playerController = Player.GetComponent<PlayerController>();
+
+            // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
             if (firstRun)   // Pour le premier frame pas besoin de s'inquieter de la plateforme precedente      
             {
                 firstRun = false;
                 lastPlatform = UnityEngine.Random.Range(0, theObjectPools.Length);
+                moveSpeedInitial = playerController.moveSpeed;
+
             }
             else
             {
@@ -85,48 +91,70 @@ public class PlaformGenerator : MonoBehaviour {
             }
 
             // ********** CALCUL DISTANCE MAX EN FONCTION DE LA HAUTEUR **********
-            if(platformWidths[platformSelector] == 9)
-            {
-                distanceBetweenMax = Mathf.Exp(-heightChange / (float)2.10);
-            }
-            else if (heightChange >= -0.5)
-            {
-                distanceBetweenMax = Mathf.Exp(-heightChange/2);
-            }
-            else
-            {
-                distanceBetweenMax = Mathf.Exp(-heightChange/ (float)1.80);
+
+            float DistanceMax(float palier) {
+                if (platformWidths[platformSelector] == 9)
+                {
+                    distanceBetweenMax = 3;
+                    return distanceBetweenMax;
+                }
+                else if (heightChange >= -0.5)
+                {
+                    //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)2.05);
+                    distanceBetweenMax = palier - ((float)0.9 * heightChange);
+                    return distanceBetweenMax;
+                }
+                else
+                {
+                    //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)1.80);
+                    distanceBetweenMax = palier + ((float)0.25 * heightChange);
+                    return distanceBetweenMax;
+                }
             }
 
             // ********** CONDITIONS **********
-            GameObject Player = GameObject.Find("Player");
-            PlayerController playerController = Player.GetComponent<PlayerController>();
-            moveSpeed = playerController.moveSpeed;        // Permet de recuperer la variable moveSpeed du script PlayerController. Avant la 1?re plateforme pour ne pas quelle soit coll?e au start.
+            
+            moveSpeed = playerController.moveSpeed; // Calcul du nouveau moveSpeed
 
             if (moveSpeed <= 12)
             {
-                distanceBetweenMin = 2;
-                distanceBetweenMax = 4;
+                /*distanceBetweenMin = 2;
+                distanceBetweenMax = 4;*/
+                if (previousPlatform == 3)
+                {
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
+                }
+                else
+                {
+                    DistanceMax(4);
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
+                }
             }
             else if (moveSpeed > 12 && moveSpeed <= 13.5)
             {
-                distanceBetweenMin = 3;
-                distanceBetweenMax = 5;
+                /*distanceBetweenMin = 3;
+                distanceBetweenMax = 5;*/
+                DistanceMax(5);
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(((float)1.25 * distanceBetweenMin), distanceBetweenMax);
             }
             else if (moveSpeed > 13.5 && moveSpeed < 15)
             {
-                distanceBetweenMin = 5;
-                distanceBetweenMax = 8;
+                /*distanceBetweenMin = 5;
+                distanceBetweenMax = 8;*/
+                DistanceMax(6);
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(((float)1.85 * distanceBetweenMin), distanceBetweenMax);
             }
             else
             {
-                distanceBetweenMin = 6;
-                distanceBetweenMax = 9;
+                //distanceBetweenMin = 6;
+                //distanceBetweenMax = 9;
+                DistanceMax((float)6.2);
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range((2 * distanceBetweenMin), distanceBetweenMax);
             }
 
-            if (previousPlatform == 3)
+            /*if (previousPlatform == 3)
             {
-                distanceBetween = (moveSpeed / 10) * Random.Range(4, 6);
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
             }
             else if (platformSelector == 3)
             {
@@ -134,9 +162,35 @@ public class PlaformGenerator : MonoBehaviour {
             }
             else
             {
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
+
+            }*/
+
+            // ********** CONTRAINTES DE DISTANCE **********
+            /*if (previousPlatform == 3 || previousPlatform == 4)  // Contraintes pour la plateforme 3 (1x1)
+            {
+                distanceBetweenMin = (float)3;
+            }
+            else
+            {
+                distanceBetweenMin = 2;
+            }*/
+
+            // distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
+
+            /*if (previousPlatform == 3)
+            {
+                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, DistanceMax(6));
+            }*/
+            /*else if (platformSelector == 3)
+            {
+                distanceBetweenMin = 4;
+            }*/
+            /*else
+            {
                 distanceBetween = (moveSpeed / 10) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
 
-            }
+            }*/
 
             if (platformSelector == 0){     // On specifie la future position lors de la generation
 
@@ -148,15 +202,14 @@ public class PlaformGenerator : MonoBehaviour {
 
             }
 
-            // ********** CONTRAINTES DE DISTANCE **********
-            if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
+            /*if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
-                distanceBetweenMin = (float)2.5;
+                distanceBetweenMin = distanceBetweenMax;
             }
             else
             {
                 distanceBetweenMin = 2;
-            }
+            }*/
 
             // ********** GENERATION **********
             GameObject newPlatform = theObjectPools[platformSelector].GetPooledObject();
