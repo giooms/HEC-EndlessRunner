@@ -31,10 +31,10 @@ public class PlaformGenerator : MonoBehaviour {
     private float moveSpeedInitial;
     private float moveSpeed;
 
-    private float randomchance;// la proba d'avoir chaque méchant
+    private float randomchance;// la proba d'avoir chaque m?chant
     public niessenGenerator legenerateurdeniessen;
     public dupontGenerator legenerateurdedupont;
-    public float mechants;// le pourcentage de chance d'avoir des méchants en fonction avancement
+    public float mechants;// le pourcentage de chance d'avoir des m?chants en fonction avancement
     public float vitessedepatrouille;
     public Vector3 startposition;
 
@@ -130,9 +130,9 @@ public class PlaformGenerator : MonoBehaviour {
             {
                 /*distanceBetweenMin = 2;
                 distanceBetweenMax = 4;*/
-                if (previousPlatform == 3)
+                if (previousPlatform == 2 || previousPlatform == 3)
                 {
-                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4,6);
                 }
                 else
                 {
@@ -151,7 +151,7 @@ public class PlaformGenerator : MonoBehaviour {
             {
                 /*distanceBetweenMin = 5;
                 distanceBetweenMax = 8;*/
-                if (previousPlatform == 3)
+                if (previousPlatform == 2 || previousPlatform == 3)
                 {
                     distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(6, 7);
                 }
@@ -225,7 +225,7 @@ public class PlaformGenerator : MonoBehaviour {
             randomchance = Random.Range(0.0f, 1.0f);
             if (platformWidths[platformSelector] == 9)
             {
-                if (moveSpeed >= 10.5f) // pour que les méchants ne soient pas là direct
+                if (moveSpeed >= 10.5f) // pour que les m?chants ne soient pas l? direct
                 {
 
                     if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
