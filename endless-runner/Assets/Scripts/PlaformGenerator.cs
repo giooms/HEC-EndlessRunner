@@ -31,6 +31,13 @@ public class PlaformGenerator : MonoBehaviour {
     private float moveSpeedInitial;
     private float moveSpeed;
 
+    private float randomchance;     // la proba d'avoir chaque mechant
+    public niessenGenerator legenerateurdeniessen;
+    public dupontGenerator legenerateurdedupont;
+    public float mechants;      // le pourcentage de chance d'avoir des mechants en fonction avancement
+    public float vitessedepatrouille;
+    public Vector3 startposition;
+
 
     // ********** SEULEMENT AVANT PREMIER FRAME **********
     void Start() {
@@ -44,6 +51,9 @@ public class PlaformGenerator : MonoBehaviour {
 
         minHeight = transform.position.y;
         maxHeight = maxHeightPoint.position.y;
+
+        legenerateurdedupont = FindObjectOfType<dupontGenerator>();
+        legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
 
     }
 
@@ -209,6 +219,26 @@ public class PlaformGenerator : MonoBehaviour {
             else{
                 transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2) + distanceBetween, heightChange, transform.position.z);
 
+            }
+
+            // ********** LES MECHANTS **********
+            randomchance = Random.Range(0.0f, 1.0f);
+            if (platformWidths[platformSelector] == 9)
+            {
+                if (moveSpeed >= 10.5f) // pour que les mechants ne soient pas la direct
+                {
+
+                    if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
+                    {
+                        legenerateurdedupont.creemechant(new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z));
+                        Debug.LogError("test");
+                    }
+                    else
+                    {
+                        legenerateurdeniessen.creemechant(new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z));
+
+                    }
+                }
             }
 
             /*if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
