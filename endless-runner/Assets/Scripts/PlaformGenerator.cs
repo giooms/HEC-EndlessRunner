@@ -141,6 +141,15 @@ public class PlaformGenerator : MonoBehaviour {
             {
                 /*distanceBetweenMin = 5;
                 distanceBetweenMax = 8;*/
+                if (previousPlatform == 3)
+                {
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(6, 7);
+                }
+                else
+                {
+                    DistanceMax(6);
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
+                }
                 DistanceMax(6);
                 distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(((float)1.85 * distanceBetweenMin), distanceBetweenMax);
             }
