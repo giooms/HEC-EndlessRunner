@@ -241,22 +241,7 @@ public class PlaformGenerator : MonoBehaviour {
                 }
             }
             // ********** CONTRAINTES DE DISTANCE **********
-            if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
-            {
-                if (moveSpeed >= 10.5f) // pour que les mechants ne soient pas la direct
-                {
-
-                    if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
-                    {
-                        legenerateurdedupont.creemechant(new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z));
-                    }
-                    else
-                    {
-                        legenerateurdeniessen.creemechant(new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z));
-
-                    }
-                }
-            }
+   
 
             /*if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
             {
