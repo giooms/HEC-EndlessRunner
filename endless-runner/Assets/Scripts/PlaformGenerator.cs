@@ -31,17 +31,10 @@ public class PlaformGenerator : MonoBehaviour {
     private float moveSpeedInitial;
     private float moveSpeed;
 
-<<<<<<< HEAD
-    private float randomchance;     // la proba d'avoir chaque mechant
-    public niessenGenerator legenerateurdeniessen;
-    public dupontGenerator legenerateurdedupont;
-    public float mechants;      // le pourcentage de chance d'avoir des mechants en fonction avancement
-=======
     private float randomchance;// la proba d'avoir chaque méchant
     public niessenGenerator legenerateurdeniessen;
     public dupontGenerator legenerateurdedupont;
     public float mechants;// le pourcentage de chance d'avoir des méchants en fonction avancement
->>>>>>> parent of 1c44b6e (Revert "mob fonctionne")
     public float vitessedepatrouille;
     public Vector3 startposition;
 
@@ -228,12 +221,7 @@ public class PlaformGenerator : MonoBehaviour {
 
             }
 
-<<<<<<< HEAD
             // ********** LES MECHANTS **********
-            randomchance = Random.Range(0.0f, 1.0f);
-            if (platformWidths[platformSelector] == 9)
-=======
-            // ********** Les méchants **********
             randomchance = Random.Range(0.0f, 1.0f);
             if (platformWidths[platformSelector] == 9)
             {
@@ -254,7 +242,6 @@ public class PlaformGenerator : MonoBehaviour {
             }
             // ********** CONTRAINTES DE DISTANCE **********
             if (platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
->>>>>>> parent of 1c44b6e (Revert "mob fonctionne")
             {
                 if (moveSpeed >= 10.5f) // pour que les mechants ne soient pas la direct
                 {
@@ -262,7 +249,6 @@ public class PlaformGenerator : MonoBehaviour {
                     if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
                     {
                         legenerateurdedupont.creemechant(new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z));
-                        Debug.LogError("test");
                     }
                     else
                     {
