@@ -9,6 +9,7 @@ public class patrouille : MonoBehaviour
     private float distance;//distance entre le méchant et le player
     public Transform player;
     public float auxabords = 2f;// la distance apd laquelle on considère que proche
+    private Vector2 joueursurx;
 
     void Start()
     {
@@ -18,16 +19,18 @@ public class patrouille : MonoBehaviour
     private void FixedUpdate()
     {
 
-        /*distanceenx = player.position.x-transform.position.x;
+       distance = Mathf.Abs(player.position.x-transform.position.x);
+
         if( distance < auxabords)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.position.x, vitessepatrouille);
+            joueursurx = new Vector2(player.position.x, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, joueursurx, vitessepatrouille * Time.deltaTime);
             
         }
-        else { */
+        else { 
         //this.transform.position += Vector3.right * Time.deltaTime * vitessepatrouille;
         transform.Translate(Vector2.right * Time.deltaTime * vitessepatrouille);
-        // }
+         }
 
 
     }

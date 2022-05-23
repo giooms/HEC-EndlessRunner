@@ -225,8 +225,7 @@ public class PlaformGenerator : MonoBehaviour {
             randomchance = Random.Range(0.0f, 1.0f);
             if (platformWidths[platformSelector] == 9)
             {
-                if (moveSpeed >= 10.5f) // pour que les méchants ne soient pas là direct
-                {
+                
 
                     if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
                     {
@@ -238,7 +237,7 @@ public class PlaformGenerator : MonoBehaviour {
 
                     }
                 }
-            }
+            
             // ********** CONTRAINTES DE DISTANCE **********
    
 

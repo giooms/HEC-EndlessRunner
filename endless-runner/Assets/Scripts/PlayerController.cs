@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     private float moveSpeedStore;
     public float speedMultiplier; //multiplicateur de vitesse
+    public float pointbonus = 0;// combien de points on gagne car on a sauté sur tête, initialise a zero
 
     public float speedIncreaseMilestone; //distance a partir de laquelle la vitesse augmente
     private float speedIncreaseMilestoneStore;
@@ -79,9 +80,26 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter2D (Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "killbox")
+        {
+            theGameManager.RestartGame();
+            moveSpeed = moveSpeedStore;
+            speedMilestoneCount = speedMilestoneCountStore;
+            speedIncreaseMilestone = speedIncreaseMilestoneStore;
+        }
+    }
+     void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "colliderhead")
+        {
+            // booléan pour dire que une fois touche ne peut plus toucher a nv
+            // on doit gagner des points donc faire un lien avec le score
+            pointbonus = pointbonus + 10;
+            other.gameObject.SetActive(false);
+        }
+        else if (other.gameObject.tag == "collidercorps")
         {
             theGameManager.RestartGame();
             moveSpeed = moveSpeedStore;

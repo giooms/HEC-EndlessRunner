@@ -14,11 +14,18 @@ public class ScoreManager : MonoBehaviour
     public float pointsPerSecond;
 
     public bool scoreIncreasing;
-
+    public PlayerController playercontroller;// les points bonus qui viennent de PlayerController qd on saute sur un mechant
+    //public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.HasKey("HighScore"))
+        playercontroller=FindObjectOfType<PlayerController>();
+
+        //GameObject Player = GameObject.Find("Player");
+        //PlayerController playerController = Player.GetComponent<PlayerController>();
+        //pointbonus = playerController.pointbonus;// pas 
+
+        if (PlayerPrefs.HasKey("HighScore"))
         {
             highscoreCount = PlayerPrefs.GetFloat("HighScore");
         }
@@ -29,13 +36,13 @@ public class ScoreManager : MonoBehaviour
     {
         if (scoreIncreasing)
         {
-            scoreCount += pointsPerSecond * Time.deltaTime;
+            scoreCount = scoreCount + (pointsPerSecond * Time.deltaTime) /*+ playercontroller.pointbonus*/;
         }
 
         if (scoreCount > highscoreCount)
         {
             highscoreCount = scoreCount;
-            PlayerPrefs.SetFloat("HighScore", highscoreCount);
+            PlayerPrefs.SetFloat("HighScore", highscoreCount);// pas une bonne idéé => si tu veux sauvegarder juste à la fin car si dans update va prendre trop de place
         }
 
         scoreText.text = "Score: " + Mathf.Round(scoreCount);
