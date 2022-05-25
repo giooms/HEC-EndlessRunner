@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour {
             moveSpeed = moveSpeedStore;
             speedMilestoneCount = speedMilestoneCountStore;
             speedIncreaseMilestone = speedIncreaseMilestoneStore;
+
+            FindObjectOfType<ScoreManager>().HighScore();
         }
     }
 }
