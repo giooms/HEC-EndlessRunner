@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlaformGenerator : MonoBehaviour {
 
-    public GameObject thePlatform; 
+    public GameObject thePlatform;
     public Transform generationPoint;
     private float distanceBetween;
     private float platformWidth;
@@ -31,13 +33,26 @@ public class PlaformGenerator : MonoBehaviour {
     private float moveSpeedInitial;
     private float moveSpeed;
 
-    private float randomchance;// la proba d'avoir chaque m?chant
+    private float randomchance;// la proba d'avoir chaque mechant
     public niessenGenerator legenerateurdeniessen;
     public dupontGenerator legenerateurdedupont;
-    public float mechants;// le pourcentage de chance d'avoir des m?chants en fonction avancement
+    public float mechants;// le pourcentage de chance d'avoir des mechants en fonction avancement
     public float vitessedepatrouille;
     public Vector3 startposition;
 
+    public GameObject Background_hall;
+    public GameObject Background_030;
+    public GameObject Background_050;
+    //public GameObject Background_Cafet;
+    public GameObject Background_jardin;
+    public GameObject Background_newbuild;
+
+    public bool load_hall;
+    public bool load_050;
+    public bool load_030;
+    public bool load_newbuild;
+    public bool load_jardin;
+    //public bool load_Cafet;
 
     // ********** SEULEMENT AVANT PREMIER FRAME **********
     void Start() {
@@ -54,6 +69,47 @@ public class PlaformGenerator : MonoBehaviour {
 
         legenerateurdedupont = FindObjectOfType<dupontGenerator>();
         legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
+
+        GameObject TempManager_object = GameObject.Find("TempManager_object");
+        TempManager TempManagerScript = TempManager_object.GetComponent<TempManager>();
+        load_hall = TempManagerScript.load_hall;
+        load_050 = TempManagerScript.load_050;
+        load_030 = TempManagerScript.load_030;
+        //load_Cafet = TempManagerScript.load_Cafet;
+        load_jardin = TempManagerScript.load_jardin;
+        load_newbuild = TempManagerScript.load_newbuild;
+
+        Background_hall.SetActive(false);
+        Background_030.SetActive(false);
+        Background_050.SetActive(false);
+        //Background_Cafet.SetActive(false);
+        Background_jardin.SetActive(false);
+        Background_newbuild.SetActive(false);
+
+        if (load_050)
+        {
+            Background_050.SetActive(true); 
+        }
+        else if (load_030)
+        {
+            Background_030.SetActive(true);
+        }
+        /*else if (load_Cafet)
+        {
+            Background_Cafet.SetActive(true);
+        }*/
+        else if (load_newbuild)
+        {
+            Background_newbuild.SetActive(true);
+        }
+        else if (load_jardin)
+        {
+            Background_jardin.SetActive(true);
+        }
+        else
+        {
+            Background_hall.SetActive(true);
+        }
 
     }
 
@@ -132,7 +188,7 @@ public class PlaformGenerator : MonoBehaviour {
                 distanceBetweenMax = 4;*/
                 if (previousPlatform == 2 || previousPlatform == 3)
                 {
-                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4,6);
+                    distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4,5);
                 }
                 else
                 {

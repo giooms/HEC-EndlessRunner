@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitToMain()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(mainMenuLevel);
+        SceneManager.LoadScene("chooseAvatar");
     }
 
     public void PauseGame()

@@ -14,6 +14,6 @@ public class DeathMenu : MonoBehaviour
 
     public void QuitToMain()
     {
-        SceneManager.LoadScene(mainMenuLevel);
+        SceneManager.LoadScene("chooseAvatar");
     }
 }

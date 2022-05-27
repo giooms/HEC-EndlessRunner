@@ -8,7 +8,7 @@ public class patrouille : MonoBehaviour
     public float vitessepatrouille;// Dupont va à 2f et Niessen à 3
     private float distance;//distance entre le méchant et le player
     public Transform player;
-    public float auxabords = 2f;// la distance apd laquelle on considère que proche
+    public float auxabords = 3f;// la distance apd laquelle on considère que proche
     private Vector2 joueursurx;
 
     void Start()
