@@ -172,17 +172,6 @@ MonoBehaviour:
   Background_Cafet: {fileID: 1617047001}
   Background_jardin: {fileID: 408057666}
   Background_newbuild: {fileID: 1132390570}
-  load_hall: 0
-  load_050: 0
-  load_030: 0
-  load_newbuild: 0
-  load_jardin: 0
-  load_Cafet: 0
-  load_Player: 0
-  load_Thomas: 0
-  load_Marie: 0
-  load_Heloise: 0
-  load_Nathan: 0
   Player: {fileID: 338181726}
   Thomas: {fileID: 701251691}
   Marie: {fileID: 541274849}
@@ -6436,7 +6425,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformGenerator: {fileID: 20298356}
-  thePlayer: {fileID: 338181731}
+  Player: {fileID: 338181726}
+  Thomas: {fileID: 701251691}
+  Marie: {fileID: 541274849}
+  Heloise: {fileID: 1735631116}
+  Nathan: {fileID: 755752183}
   theDeathScreen: {fileID: 1988510832}
   pauseButton: {fileID: 1255371887}
 --- !u!4 &1300199297

@@ -7,7 +7,14 @@ public class GameManager : MonoBehaviour
     public Transform platformGenerator;
     private Vector3 platformStartPoint;
 
-    public PlayerController thePlayer;
+    public GameObject Player;
+    public GameObject Thomas;
+    public GameObject Marie;
+    public GameObject Heloise;
+    public GameObject Nathan;
+
+    private GameObject ActivePlayer;
+    private PlayerController thePlayer;
     private Vector3 playerStartPoint;
 
     private PlatformDestroyer[] platformList;
@@ -20,6 +27,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (TempManager.singleton.load_Nathan)
+        {
+            ActivePlayer = GameObject.Find("Nathan");
+        }
+        else if (TempManager.singleton.load_Thomas)
+        {
+            ActivePlayer = GameObject.Find("Thomas");
+        }
+        else if (TempManager.singleton.load_Marie)
+        {
+            ActivePlayer = GameObject.Find("Marie");
+        }
+        else if (TempManager.singleton.load_Heloise)
+        {
+            ActivePlayer = GameObject.Find("Heloise");
+        }
+        else
+        {
+            ActivePlayer = GameObject.Find("Player");
+        }
+        thePlayer = ActivePlayer.GetComponent<PlayerController>();
         platformStartPoint = platformGenerator.position;
         playerStartPoint = thePlayer.transform.position;
 

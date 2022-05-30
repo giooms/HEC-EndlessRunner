@@ -47,19 +47,6 @@ public class PlaformGenerator : MonoBehaviour {
     public GameObject Background_jardin;
     public GameObject Background_newbuild;
 
-    public bool load_hall;
-    public bool load_050;
-    public bool load_030;
-    public bool load_newbuild;
-    public bool load_jardin;
-    public bool load_Cafet;
-
-    public bool load_Player;
-    public bool load_Thomas;
-    public bool load_Marie;
-    public bool load_Heloise;
-    public bool load_Nathan;
-
     public GameObject Player;
     public GameObject Thomas;
     public GameObject Marie;
@@ -83,14 +70,6 @@ public class PlaformGenerator : MonoBehaviour {
         legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
 
         // ********** CHANGEMENT MAP **********
-                        //On charge toutes les variables de TempManager
-        load_hall = TempManager.singleton.load_hall;
-        load_050 = TempManager.singleton.load_050;
-        load_030 = TempManager.singleton.load_030;
-        load_Cafet = TempManager.singleton.load_Cafet;
-        load_jardin = TempManager.singleton.load_jardin;
-        load_newbuild = TempManager.singleton.load_newbuild;
-        
                         //On set toutes maps en false
         Background_hall.SetActive(false);
         Background_030.SetActive(false);
@@ -100,23 +79,23 @@ public class PlaformGenerator : MonoBehaviour {
         Background_newbuild.SetActive(false);
         
                         //On set active la map dont la variable est true dans TempManager
-        if (load_050)
+        if (TempManager.singleton.load_050)
         {
             Background_050.SetActive(true); 
         }
-        else if (load_030)
+        else if (TempManager.singleton.load_030)
         {
             Background_030.SetActive(true);
         }
-        else if (load_Cafet)
+        else if (TempManager.singleton.load_Cafet)
         {
             Background_Cafet.SetActive(true);
         }
-        else if (load_newbuild)
+        else if (TempManager.singleton.load_newbuild)
         {
             Background_newbuild.SetActive(true);
         }
-        else if (load_jardin)
+        else if (TempManager.singleton.load_jardin)
         {
             Background_jardin.SetActive(true);
         }
@@ -126,31 +105,25 @@ public class PlaformGenerator : MonoBehaviour {
         }
 
         // ********** CHANGEMENT AVATAR **********      //meme raisonnement que pour les maps
-        load_Player = TempManager.singleton.load_Player;
-        load_Thomas = TempManager.singleton.load_Thomas;
-        load_Marie = TempManager.singleton.load_Marie;
-        load_Heloise = TempManager.singleton.load_Heloise;
-        load_Nathan = TempManager.singleton.load_Nathan;
-
         Player.SetActive(false);
         Thomas.SetActive(false);
         Marie.SetActive(false);
         Heloise.SetActive(false);
         Nathan.SetActive(false);
 
-        if (load_Nathan)
+        if (TempManager.singleton.load_Nathan)
         {
             Nathan.SetActive(true);
         }
-        else if (load_Thomas)
+        else if (TempManager.singleton.load_Thomas)
         {
             Thomas.SetActive(true);
         }
-        else if (load_Marie)
+        else if (TempManager.singleton.load_Marie)
         {
             Marie.SetActive(true);
         }
-        else if (load_Heloise)
+        else if (TempManager.singleton.load_Heloise)
         {
             Heloise.SetActive(true);
         }
@@ -174,19 +147,19 @@ public class PlaformGenerator : MonoBehaviour {
         if (transform.position.x < generationPoint.position.x) {        // On s'assure que la generation se fasse plus loin
 
 
-            if (load_Nathan)
+            if (TempManager.singleton.load_Nathan)
             {
                 GameObject Player = GameObject.Find("Nathan");
             }
-            else if (load_Thomas)
+            else if (TempManager.singleton.load_Thomas)
             {
                 GameObject Player = GameObject.Find("Thomas");
             }
-            else if (load_Marie)
+            else if (TempManager.singleton.load_Marie)
             {
                 GameObject Player = GameObject.Find("Marie");
             }
-            else if (load_Heloise)
+            else if (TempManager.singleton.load_Heloise)
             {
                 GameObject Player = GameObject.Find("Heloise");
             }
