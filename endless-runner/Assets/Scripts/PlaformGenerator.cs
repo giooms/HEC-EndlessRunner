@@ -43,7 +43,7 @@ public class PlaformGenerator : MonoBehaviour {
     public GameObject Background_hall;
     public GameObject Background_030;
     public GameObject Background_050;
-    //public GameObject Background_Cafet;
+    public GameObject Background_Cafet;
     public GameObject Background_jardin;
     public GameObject Background_newbuild;
 
@@ -52,7 +52,19 @@ public class PlaformGenerator : MonoBehaviour {
     public bool load_030;
     public bool load_newbuild;
     public bool load_jardin;
-    //public bool load_Cafet;
+    public bool load_Cafet;
+
+    public bool load_Player;
+    public bool load_Thomas;
+    public bool load_Marie;
+    public bool load_Heloise;
+    public bool load_Nathan;
+
+    public GameObject Player;
+    public GameObject Thomas;
+    public GameObject Marie;
+    public GameObject Heloise;
+    public GameObject Nathan;
 
     // ********** SEULEMENT AVANT PREMIER FRAME **********
     void Start() {
@@ -70,19 +82,17 @@ public class PlaformGenerator : MonoBehaviour {
         legenerateurdedupont = FindObjectOfType<dupontGenerator>();
         legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
 
-        GameObject TempManager_object = GameObject.Find("TempManager_object");
-        TempManager TempManagerScript = TempManager_object.GetComponent<TempManager>();
-        load_hall = TempManagerScript.load_hall;
-        load_050 = TempManagerScript.load_050;
-        load_030 = TempManagerScript.load_030;
-        //load_Cafet = TempManagerScript.load_Cafet;
-        load_jardin = TempManagerScript.load_jardin;
-        load_newbuild = TempManagerScript.load_newbuild;
+        load_hall = TempManager.singleton.load_hall;
+        load_050 = TempManager.singleton.load_050;
+        load_030 = TempManager.singleton.load_030;
+        load_Cafet = TempManager.singleton.load_Cafet;
+        load_jardin = TempManager.singleton.load_jardin;
+        load_newbuild = TempManager.singleton.load_newbuild;
 
         Background_hall.SetActive(false);
         Background_030.SetActive(false);
         Background_050.SetActive(false);
-        //Background_Cafet.SetActive(false);
+        Background_Cafet.SetActive(false);
         Background_jardin.SetActive(false);
         Background_newbuild.SetActive(false);
 
@@ -94,10 +104,10 @@ public class PlaformGenerator : MonoBehaviour {
         {
             Background_030.SetActive(true);
         }
-        /*else if (load_Cafet)
+        else if (load_Cafet)
         {
             Background_Cafet.SetActive(true);
-        }*/
+        }
         else if (load_newbuild)
         {
             Background_newbuild.SetActive(true);
@@ -111,6 +121,38 @@ public class PlaformGenerator : MonoBehaviour {
             Background_hall.SetActive(true);
         }
 
+        load_Player = TempManager.singleton.load_Player;
+        load_Thomas = TempManager.singleton.load_Thomas;
+        load_Marie = TempManager.singleton.load_Marie;
+        load_Heloise = TempManager.singleton.load_Heloise;
+        load_Nathan = TempManager.singleton.load_Nathan;
+
+        Player.SetActive(false);
+        Thomas.SetActive(false);
+        Marie.SetActive(false);
+        Heloise.SetActive(false);
+        Nathan.SetActive(false);
+
+        if (load_Nathan)
+        {
+            Nathan.SetActive(true);
+        }
+        else if (load_Thomas)
+        {
+            Thomas.SetActive(true);
+        }
+        else if (load_Marie)
+        {
+            Marie.SetActive(true);
+        }
+        else if (load_Heloise)
+        {
+            Heloise.SetActive(true);
+        }
+        else
+        {
+            Player.SetActive(true);
+        }
     }
 
 
@@ -126,8 +168,29 @@ public class PlaformGenerator : MonoBehaviour {
 
         if (transform.position.x < generationPoint.position.x) {        // On s'assure que la generation se fasse plus loin
 
-            GameObject Player = GameObject.Find("Player");
+
+            if (load_Nathan)
+            {
+                GameObject Player = GameObject.Find("Nathan");
+            }
+            else if (load_Thomas)
+            {
+                GameObject Player = GameObject.Find("Thomas");
+            }
+            else if (load_Marie)
+            {
+                GameObject Player = GameObject.Find("Marie");
+            }
+            else if (load_Heloise)
+            {
+                GameObject Player = GameObject.Find("Heloise");
+            }
+            else
+            {
+                GameObject Player = GameObject.Find("Player");  
+            }
             PlayerController playerController = Player.GetComponent<PlayerController>();
+
 
             // ********** CHOIX DE LA PLATEFORME ALEATOIREMENT VIA FCT **********
             if (firstRun)   // Pour le premier frame pas besoin de s'inquieter de la plateforme precedente      

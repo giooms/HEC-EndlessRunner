@@ -387,9 +387,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_newbuild
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_newbuild
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -513,6 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923799404}
+  - component: {fileID: 923799405}
   m_Layer: 0
   m_Name: Maps
   m_TagString: Untagged
@@ -546,6 +547,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 160, y: 75.4305}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &923799405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923799403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e2fcd2d0e552247b10a97b2ea643f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &995079718
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,9 +654,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_hall
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_hall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -740,6 +753,12 @@ MonoBehaviour:
   load_030: 0
   load_newbuild: 0
   load_jardin: 0
+  load_Cafet: 0
+  load_Player: 0
+  load_Thomas: 0
+  load_Marie: 0
+  load_Heloise: 0
+  load_Nathan: 0
 --- !u!1 &1346850785
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,9 +854,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_030
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_030
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -980,9 +999,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_jardin
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_jardin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,7 +1101,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 900, y: 650}
+  m_ReferenceResolution: {x: 1200, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1242,9 +1261,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_amphi050
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_050
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1387,9 +1406,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1311789665}
-        m_TargetAssemblyTypeName: TempManager, Assembly-CSharp
-        m_MethodName: ChooseMap_cafet
+      - m_Target: {fileID: 923799405}
+        m_TargetAssemblyTypeName: ObjSelector, Assembly-CSharp
+        m_MethodName: MapSelect_Cafet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
