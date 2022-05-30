@@ -82,20 +82,24 @@ public class PlaformGenerator : MonoBehaviour {
         legenerateurdedupont = FindObjectOfType<dupontGenerator>();
         legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
 
+        // ********** CHANGEMENT MAP **********
+                        //On charge toutes les variables de TempManager
         load_hall = TempManager.singleton.load_hall;
         load_050 = TempManager.singleton.load_050;
         load_030 = TempManager.singleton.load_030;
         load_Cafet = TempManager.singleton.load_Cafet;
         load_jardin = TempManager.singleton.load_jardin;
         load_newbuild = TempManager.singleton.load_newbuild;
-
+        
+                        //On set toutes maps en false
         Background_hall.SetActive(false);
         Background_030.SetActive(false);
         Background_050.SetActive(false);
         Background_Cafet.SetActive(false);
         Background_jardin.SetActive(false);
         Background_newbuild.SetActive(false);
-
+        
+                        //On set active la map dont la variable est true dans TempManager
         if (load_050)
         {
             Background_050.SetActive(true); 
@@ -121,6 +125,7 @@ public class PlaformGenerator : MonoBehaviour {
             Background_hall.SetActive(true);
         }
 
+        // ********** CHANGEMENT AVATAR **********      //meme raisonnement que pour les maps
         load_Player = TempManager.singleton.load_Player;
         load_Thomas = TempManager.singleton.load_Thomas;
         load_Marie = TempManager.singleton.load_Marie;
