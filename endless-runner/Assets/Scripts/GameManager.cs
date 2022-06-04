@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private PlayerController thePlayer;
     private Vector3 playerStartPoint;
 
-    private PlatformDestroyer[] platformList;
+    private ObjectDestroyer[] platformList;
 
     private ScoreManager theScoreManager;
 
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         theDeathScreen.gameObject.SetActive(false);
         pauseButton.SetActive(true);
 
-        platformList = FindObjectsOfType<PlatformDestroyer>();
+        platformList = FindObjectsOfType<ObjectDestroyer>();
         for (int i = 0; i < platformList.Length; i++)
         {
             platformList[i].gameObject.SetActive(false);

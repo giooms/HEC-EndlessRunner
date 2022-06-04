@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     private float moveSpeedStore;
     public float speedMultiplier; //multiplicateur de vitesse
-    public float pointbonus = 0;// combien de points on gagne car on a sauté sur tête, initialise a zero
 
     public float speedIncreaseMilestone; //distance a partir de laquelle la vitesse augmente
     private float speedIncreaseMilestoneStore;
@@ -30,6 +29,10 @@ public class PlayerController : MonoBehaviour {
 
     public GameManager theGameManager;
 
+    //variables liees au score si sur tete:
+    public float pointbonus; //combien de pts on gange apres saut sur tete
+    public ScoreManager scoremanager;
+
     // Start is called before the first frame update
     void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -43,13 +46,13 @@ public class PlayerController : MonoBehaviour {
         moveSpeedStore = moveSpeed;
         speedMilestoneCountStore = speedMilestoneCount;
         speedIncreaseMilestoneStore = speedIncreaseMilestone;
+
+        scoremanager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround); //si le cercle autour du groundcheck touche le sol alors grounded est vrai
 
@@ -92,16 +95,9 @@ public class PlayerController : MonoBehaviour {
             FindObjectOfType<ScoreManager>().HighScore();
         }
     }
-     void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "colliderhead")
-        {
-            // booléan pour dire que une fois touche ne peut plus toucher a nv
-            // on doit gagner des points donc faire un lien avec le score
-            pointbonus = pointbonus + 10;
-            other.gameObject.SetActive(false);
-        }
-        else if (other.gameObject.tag == "collidercorps")
+        if (other.gameObject.tag == "collidercorps")
         {
             theGameManager.RestartGame();
             moveSpeed = moveSpeedStore;
@@ -109,6 +105,13 @@ public class PlayerController : MonoBehaviour {
             speedIncreaseMilestone = speedIncreaseMilestoneStore;
 
             FindObjectOfType<ScoreManager>().HighScore();
+
+        }
+        if (other.gameObject.tag == "colliderhead")      // si le joueur touche la tete du mob, alors le mechant disparait et on gagne des points.
+        {
+            other.transform.parent.gameObject.SetActive(false); //ceci permet de recuperer le parent lie au collider touche et de le faire disparaitre
+            pointbonus = 10;
+            scoremanager.scoreCount += pointbonus;  //On fait le lien avec le score
         }
     }
 }

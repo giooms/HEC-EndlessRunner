@@ -8,6 +8,7 @@ TagManager:
   - killbox
   - collidercorps
   - colliderhead
+  - player
   layers:
   - Default
   - TransparentFX

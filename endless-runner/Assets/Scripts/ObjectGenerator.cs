@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class PlaformGenerator : MonoBehaviour {
+public class ObjectGenerator : MonoBehaviour {
 
     public GameObject thePlatform;
     public Transform generationPoint;

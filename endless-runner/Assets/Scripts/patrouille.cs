@@ -13,7 +13,7 @@ public class patrouille : MonoBehaviour
 
     void Start()
     {
-        //playerposition = GameObject.Find("Player").transform.position;
+
     }
 
     private void FixedUpdate()
@@ -42,6 +42,7 @@ public class patrouille : MonoBehaviour
         {
             vitessepatrouille *= -1; // pour faire aller dans autre sens quand touche les limites      
         }
+        
     }
 
 }
