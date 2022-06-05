@@ -2,7 +2,7 @@
 ## Introduction 
 This game has been made for the project in the **Management-oriented programming** course given by M. Schyns.
 
-It has been made by **Thomas Fredrich**, **Marie Goffin**, **Héloïse Hulstaert**, **Nathan geudens** and I (**Gilles Ooms**).
+It has been made by **Thomas Fredrich**, **Marie Goffin**, **Héloïse Hulstaert**, **Nathan Geudens** and I (**Gilles Ooms**).
 
 ## How to play
 The game is currently available in a web-version here (*we recommend using a computer*): [HEC-EndlessRunner](https://giooms.github.io/endlessrunner.html)
@@ -20,7 +20,7 @@ These are:
 After that, you will be able to choose your avatar. These represent the coding team. 
 
 
-Once the Game is launched, try to survive as long as possible without falling off the platforms or running into the mobs. (My personal high-score is *206*)
+Once the Game is launched, try to survive as long as possible without falling off the platforms or running into the mobs. (Our personal high-score is *206*)
 
 ### To jump, press the **space bar**. 
 
