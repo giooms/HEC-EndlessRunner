@@ -163,8 +163,6 @@ MonoBehaviour:
   maxHeightChange: 2
   legenerateurdeniessen: {fileID: 1967829918}
   legenerateurdedupont: {fileID: 1496988638}
-  mechants: 0
-  vitessedepatrouille: 0
   startposition: {x: 0, y: 0, z: 0}
   Background_hall: {fileID: 1823184167}
   Background_030: {fileID: 1052468196}
@@ -1430,6 +1428,8 @@ MonoBehaviour:
   groundCheck: {fileID: 1452166075}
   groundCheckRadius: 0.5
   theGameManager: {fileID: 1300199296}
+  pointbonus: 0
+  scoremanager: {fileID: 0}
 --- !u!95 &338181732
 Animator:
   serializedVersion: 4
@@ -2072,11 +2072,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99dfed5489f2e641a0c2694b61bce20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitessepatrouille: 1
-  player: {fileID: 338181730}
+  vitessepatrouille: 2
+  distance: 0
   auxabords: 4
-  pointbonus: 0
-  pointbonustotal: 0
+  derniereposition: {x: 0, y: 0, z: 0}
+  positionactuelle: {x: 0, y: 0, z: 0}
+  Player: {fileID: 338181726}
+  Thomas: {fileID: 701251691}
+  Marie: {fileID: 541274849}
+  Heloise: {fileID: 1735631116}
+  Nathan: {fileID: 755752183}
+  joueurgame: {fileID: 0}
 --- !u!61 &412562178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2536,6 +2542,8 @@ MonoBehaviour:
   groundCheck: {fileID: 1406001376}
   groundCheckRadius: 0.5
   theGameManager: {fileID: 1300199296}
+  pointbonus: 0
+  scoremanager: {fileID: 0}
 --- !u!50 &541274852
 Rigidbody2D:
   serializedVersion: 4
@@ -3221,6 +3229,8 @@ MonoBehaviour:
   groundCheck: {fileID: 522645924}
   groundCheckRadius: 0.5
   theGameManager: {fileID: 1300199296}
+  pointbonus: 0
+  scoremanager: {fileID: 0}
 --- !u!50 &701251694
 Rigidbody2D:
   serializedVersion: 4
@@ -3652,6 +3662,8 @@ MonoBehaviour:
   groundCheck: {fileID: 2036417438}
   groundCheckRadius: 0.5
   theGameManager: {fileID: 1300199296}
+  pointbonus: 0
+  scoremanager: {fileID: 0}
 --- !u!50 &755752186
 Rigidbody2D:
   serializedVersion: 4
@@ -4610,11 +4622,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99dfed5489f2e641a0c2694b61bce20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitessepatrouille: 1
-  player: {fileID: 338181730}
+  vitessepatrouille: 2
+  distance: 0
   auxabords: 4
-  pointbonus: 0
-  pointbonustotal: 0
+  derniereposition: {x: 0, y: 0, z: 0}
+  positionactuelle: {x: 0, y: 0, z: 0}
+  Player: {fileID: 338181726}
+  Thomas: {fileID: 701251691}
+  Marie: {fileID: 541274849}
+  Heloise: {fileID: 1735631116}
+  Nathan: {fileID: 755752183}
+  joueurgame: {fileID: 0}
 --- !u!4 &919729574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6482108611008909812, guid: 1f91fecb2302153439560a0dae81b294, type: 3}
@@ -5830,7 +5848,7 @@ MonoBehaviour:
   highscoreCount: 0
   pointsPerSecond: 5
   scoreIncreasing: 1
-  lapatrouille: {fileID: 0}
+  pointbonustete: {fileID: 0}
 --- !u!1 &1255371887
 GameObject:
   m_ObjectHideFlags: 0
@@ -8267,6 +8285,8 @@ MonoBehaviour:
   groundCheck: {fileID: 1406971914}
   groundCheckRadius: 0.5
   theGameManager: {fileID: 1300199296}
+  pointbonus: 0
+  scoremanager: {fileID: 0}
 --- !u!50 &1735631119
 Rigidbody2D:
   serializedVersion: 4
@@ -8301,7 +8321,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006454706, y: -0.0032274127}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8312,7 +8332,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3125, y: 2.0625}
+  m_Size: {x: 1.1834035, y: 1.9398588}
   m_EdgeRadius: 0
 --- !u!212 &1735631121
 SpriteRenderer:
@@ -8374,7 +8394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735631116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.863802, y: 1.1485962, z: -2.3147564}
+  m_LocalPosition: {x: -13.8638, y: 1.1485962, z: -2.3147564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

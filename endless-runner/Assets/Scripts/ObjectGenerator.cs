@@ -35,9 +35,8 @@ public class ObjectGenerator : MonoBehaviour {
     private float randomchance;// la proba d'avoir chaque mechant
     public niessenGenerator legenerateurdeniessen;
     public dupontGenerator legenerateurdedupont;
-    public float mechants;// le pourcentage de chance d'avoir des mechants en fonction avancement
-    public float vitessedepatrouille;
     public Vector3 startposition;
+    
 
     public GameObject Background_hall;
     public GameObject Background_030;
@@ -67,7 +66,7 @@ public class ObjectGenerator : MonoBehaviour {
 
         legenerateurdedupont = FindObjectOfType<dupontGenerator>();
         legenerateurdeniessen = FindObjectOfType<niessenGenerator>();
-
+        
         // ********** CHANGEMENT MAP **********
                         //On set toutes maps en false
         Background_hall.SetActive(false);
@@ -332,7 +331,10 @@ public class ObjectGenerator : MonoBehaviour {
                         legenerateurdeniessen.creemechant(new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z));
 
                     }
-                }
+            }
+
+           
+            
             
             // ********** CONTRAINTES DE DISTANCE **********
    

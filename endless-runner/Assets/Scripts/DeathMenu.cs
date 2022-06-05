@@ -7,7 +7,7 @@ public class DeathMenu : MonoBehaviour
 {
     public string mainMenuLevel;
 
-    public void RestartGame()
+    public void RestartGame()// fonction qui induit le redemarrage du jeu
     {
         FindObjectOfType<GameManager>().Reset();
     }

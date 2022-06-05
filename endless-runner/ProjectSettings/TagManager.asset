@@ -9,6 +9,7 @@ TagManager:
   - collidercorps
   - colliderhead
   - player
+  - diploma
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: mob
     uniqueID: 2657928797
+    locked: 0
+  - name: diploma
+    uniqueID: 161932439
     locked: 0
