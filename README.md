@@ -27,3 +27,5 @@ Once the Game is launched, try to survive as long as possible without falling of
 As soon as the game is over, you can start over or decide to change your Avatar or the map you play on. 
 
 ## Enjoy!
+
+NB: If you play the game inside Unity, make sure to start from the chooseMap Scene.
