@@ -15,7 +15,6 @@ public class ObjectGenerator : MonoBehaviour {
 
     public ObjectPooler[] theObjectPools = null;   // on cree un array via les []
 
-    // public GameObject[] thePlatforms; 
     private int platformSelector;
     private float[] platformWidths;
     private int previousPlatform;
@@ -205,13 +204,11 @@ public class ObjectGenerator : MonoBehaviour {
                 }
                 else if (heightChange >= -0.5)
                 {
-                    //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)2.05);
                     distanceBetweenMax = palier - ((float)0.9 * heightChange);
                     return distanceBetweenMax;
                 }
                 else
                 {
-                    //distanceBetweenMax = (moveSpeed / moveSpeedInitial) * Mathf.Exp(-heightChange / (float)1.80);
                     distanceBetweenMax = palier + ((float)0.25 * heightChange);
                     return distanceBetweenMax;
                 }
@@ -223,8 +220,6 @@ public class ObjectGenerator : MonoBehaviour {
 
             if (moveSpeed <= 12)
             {
-                /*distanceBetweenMin = 2;
-                distanceBetweenMax = 4;*/
                 if (previousPlatform == 2 || previousPlatform == 3)
                 {
                     distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4,5);
@@ -237,15 +232,11 @@ public class ObjectGenerator : MonoBehaviour {
             }
             else if (moveSpeed > 12 && moveSpeed <= 13.5)
             {
-                /*distanceBetweenMin = 3;
-                distanceBetweenMax = 5;*/
                 DistanceMax(5);
                 distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(((float)1.25 * distanceBetweenMin), distanceBetweenMax);
             }
             else if (moveSpeed > 13.5 && moveSpeed < 15)
             {
-                /*distanceBetweenMin = 5;
-                distanceBetweenMax = 8;*/
                 if (previousPlatform == 2 || previousPlatform == 3)
                 {
                     distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(6, 7);
@@ -260,53 +251,12 @@ public class ObjectGenerator : MonoBehaviour {
             }
             else
             {
-                //distanceBetweenMin = 6;
-                //distanceBetweenMax = 9;
                 DistanceMax((float)6.2);
                 distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range((2 * distanceBetweenMin), distanceBetweenMax);
             }
 
-            /*if (previousPlatform == 3)
-            {
-                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, 6);
-            }
-            else if (platformSelector == 3)
-            {
-                distanceBetweenMin = 4;
-            }
-            else
-            {
-                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
 
-            }*/
-
-            // ********** CONTRAINTES DE DISTANCE **********
-            /*if (previousPlatform == 3 || previousPlatform == 4)  // Contraintes pour la plateforme 3 (1x1)
-            {
-                distanceBetweenMin = (float)3;
-            }
-            else
-            {
-                distanceBetweenMin = 2;
-            }*/
-
-            // distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(distanceBetweenMin, distanceBetweenMax);
-
-            /*if (previousPlatform == 3)
-            {
-                distanceBetween = (moveSpeed / moveSpeedInitial) * Random.Range(4, DistanceMax(6));
-            }*/
-            /*else if (platformSelector == 3)
-            {
-                distanceBetweenMin = 4;
-            }*/
-            /*else
-            {
-                distanceBetween = (moveSpeed / 10) * Random.Range(distanceBetweenMin, distanceBetweenMax); // Distance aleatoire entre chaque plateforme proportionelle ? la vitesse.
-
-            }*/
-
-            if (platformSelector == 0){     // On specifie la future position lors de la generation
+            if (platformSelector == 0){     // On force la plateforme 9x3 à etre collee au sol
 
                 transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2) + distanceBetween, minHeight, transform.position.z);
 
@@ -336,19 +286,6 @@ public class ObjectGenerator : MonoBehaviour {
            
             
             
-            // ********** CONTRAINTES DE DISTANCE **********
-   
-
-            /*if (platformWidths[platformSelector] == 3 || platformWidths[platformSelector] == 1)  // Contraintes pour la plateforme 3 (1x1)
-            {
-                distanceBetweenMin = distanceBetweenMax;
-            }
-            else
-            {
-                distanceBetweenMin = 2;
-            }*/
-
-            // ********** GENERATION **********
             GameObject newPlatform = theObjectPools[platformSelector].GetPooledObject();
 
             newPlatform.transform.position = transform.position;    // On genere la plateforme a la position calculee.
