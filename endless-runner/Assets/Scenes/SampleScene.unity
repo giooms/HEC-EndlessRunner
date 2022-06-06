@@ -9655,6 +9655,10 @@ PrefabInstance:
       propertyPath: Heloise
       value: 
       objectReference: {fileID: 1735631116}
+    - target: {fileID: 6520321150387223175, guid: 7a84cc1df1ba1b2468204f7347327712, type: 3}
+      propertyPath: vitessepatrouille
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8586789181462854362, guid: 7a84cc1df1ba1b2468204f7347327712, type: 3}
       propertyPath: m_Name
       value: niessen
