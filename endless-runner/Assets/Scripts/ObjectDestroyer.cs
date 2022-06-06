@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformDestroyer : MonoBehaviour{
+public class ObjectDestroyer : MonoBehaviour{
 
     public GameObject platformDestructionPoint;
 
@@ -17,8 +17,6 @@ public class PlatformDestroyer : MonoBehaviour{
     void Update(){
         
         if(transform.position.x < platformDestructionPoint.transform.position.x){
-
-            //Destroy(gameObject);
 
             gameObject.SetActive(false);
         }
