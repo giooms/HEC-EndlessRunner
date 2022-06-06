@@ -18,55 +18,39 @@ public class patrouille : MonoBehaviour
     public GameObject Nathan;
     public GameObject joueurgame;
     public int sens =1;
-    
-    
 
     void Start()
     {
         
-        
-
         // on veut prendre le transform du joueur choisi par la personne s'amusant avec notre jeu
-        Player.SetActive(false);
-        Thomas.SetActive(false);
-        Marie.SetActive(false);
-        Heloise.SetActive(false);
-        Nathan.SetActive(false);
 
         if (TempManager.singleton.load_Nathan)
         {
-            Nathan.SetActive(true);
             GameObject joueurgame = GameObject.Find("Nathan");
             joueur = joueurgame.transform;
         }
         else if (TempManager.singleton.load_Thomas)
         {
-            Thomas.SetActive(true);
             GameObject joueurgame = GameObject.Find("Thomas");
             joueur = joueurgame.transform;
         }
         else if (TempManager.singleton.load_Marie)
         {
-            Marie.SetActive(true);
             GameObject joueurgame = GameObject.Find("Marie");
             joueur = joueurgame.transform;
         }
         else if (TempManager.singleton.load_Heloise)
         {
-            Heloise.SetActive(true);
             GameObject joueurgame = GameObject.Find("Heloise");
             joueur = joueurgame.transform;
         }
         else
         {
-            Player.SetActive(true);
             GameObject joueurgame = GameObject.Find("Player");
             joueur = joueurgame.transform;
         }
        
     }
-    
-
     private void FixedUpdate()
     {
         

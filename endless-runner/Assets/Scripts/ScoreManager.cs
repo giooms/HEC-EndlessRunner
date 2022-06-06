@@ -16,16 +16,11 @@ public class ScoreManager : MonoBehaviour
     public bool scoreIncreasing;
 
     public PlayerController pointbonustete;     // les points bonus qui viennent de patrouille qd on saute sur un mechant
-    //public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
     {
         pointbonustete=FindObjectOfType<PlayerController>();
-
-        //GameObject Player = GameObject.Find("Player");
-        //PlayerController playerController = Player.GetComponent<PlayerController>();
-        //pointbonus = playerController.pointbonus;// pas 
 
         if (PlayerPrefs.HasKey("HighScore"))
         {

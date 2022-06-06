@@ -271,10 +271,9 @@ public class ObjectGenerator : MonoBehaviour {
             if (platformWidths[platformSelector] == 9)
             {
 
-
                     if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
                     {
-                        legenerateurdedupont.creemechant(new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z));
+                        legenerateurdedupont.creemechant(new Vector3(transform.position.x, transform.position.y + 2.1f, transform.position.z));     // les +...f sont necessaires pour mettre les clones au bon niveau (sinon ils popent au niveau du platformGenerator.
                     }
                     else
                     {

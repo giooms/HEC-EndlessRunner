@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour {
     public Transform groundCheck;
     public float groundCheckRadius; // a quel point le radius du cercle est grand
 
-    //private Collider2D myCollider;
-
     private Animator myAnimator;
 
     public GameManager theGameManager;
