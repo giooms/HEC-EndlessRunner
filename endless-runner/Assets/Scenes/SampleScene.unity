@@ -2075,14 +2075,13 @@ MonoBehaviour:
   vitessepatrouille: 2
   distance: 0
   auxabords: 4
-  derniereposition: {x: 0, y: 0, z: 0}
-  positionactuelle: {x: 0, y: 0, z: 0}
   Player: {fileID: 338181726}
   Thomas: {fileID: 701251691}
   Marie: {fileID: 541274849}
   Heloise: {fileID: 1735631116}
   Nathan: {fileID: 755752183}
   joueurgame: {fileID: 0}
+  sens: 1
 --- !u!61 &412562178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2283,7 +2282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Grades: 0'
 --- !u!222 &511700009
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4316,10 +4315,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4327,7 +4326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Restart
+  m_Text: 'Try again to improve your grades
 
 '
 --- !u!222 &853545992
@@ -4625,14 +4624,13 @@ MonoBehaviour:
   vitessepatrouille: 2
   distance: 0
   auxabords: 4
-  derniereposition: {x: 0, y: 0, z: 0}
-  positionactuelle: {x: 0, y: 0, z: 0}
   Player: {fileID: 338181726}
   Thomas: {fileID: 701251691}
   Marie: {fileID: 541274849}
   Heloise: {fileID: 1735631116}
   Nathan: {fileID: 755752183}
   joueurgame: {fileID: 0}
+  sens: 1
 --- !u!4 &919729574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6482108611008909812, guid: 1f91fecb2302153439560a0dae81b294, type: 3}
@@ -5687,10 +5685,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -5698,7 +5696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Restart
+  m_Text: 'Try again to improve your grades
 
 '
 --- !u!222 &1229367630
@@ -6183,7 +6181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'High Score : 0
+  m_Text: 'Highest Grades Ever : 0
 
 '
 --- !u!222 &1260304435
@@ -9538,10 +9536,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 79
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -9549,7 +9547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over
+  m_Text: You failed; at this pace you won't pass your exams.
 --- !u!222 &1970174030
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         if (PlayerPrefs.HasKey("HighScore"))
         {
             highscoreCount = PlayerPrefs.GetFloat("HighScore");
-            highscoreText.text = " High Score: " + Mathf.Round(highscoreCount);
+            highscoreText.text = " Highest Grades Ever: " + Mathf.Round(highscoreCount);
         }
     }
 
@@ -42,7 +42,7 @@ public class ScoreManager : MonoBehaviour
             scoreCount += pointsPerSecond * Time.deltaTime;
         }
 
-        scoreText.text = "Score: " + Mathf.Round(scoreCount);
+        scoreText.text = "Grades: " + Mathf.Round(scoreCount);
     }
 
     public void HighScore()
@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         {
             highscoreCount = scoreCount;
             PlayerPrefs.SetFloat("HighScore", highscoreCount);
-            highscoreText.text = " High Score: " + Mathf.Round(highscoreCount);
+            highscoreText.text = " Highest Grades Ever: " + Mathf.Round(highscoreCount);
         }
     }
 }
