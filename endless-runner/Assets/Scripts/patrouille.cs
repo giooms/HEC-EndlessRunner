@@ -64,7 +64,7 @@ public class patrouille : MonoBehaviour
             
         }
         else {
-            joueursurx = new Vector2(joueur.position.x, transform.position.y);// ceci permet d'avoir un vecteur de position utilisable a la ligne 84 qui ne prend pas en compte si le joueur saute car la valeur en y est celle du mechant
+            joueursurx = new Vector2(joueur.position.x, transform.position.y);// ceci permet d'avoir un vecteur de position utilisable a la ligne 68 qui ne prend pas en compte si le joueur saute car la valeur en y est celle du mechant
             transform.position = Vector2.MoveTowards(transform.position, joueursurx, Time.deltaTime * vitessepatrouille);
 
         }
