@@ -268,7 +268,7 @@ public class ObjectGenerator : MonoBehaviour {
 
             // ********** LES MECHANTS **********
             randomchance = Random.Range(0.0f, 1.0f);
-            if (platformWidths[platformSelector] == 9)
+            if (platformWidths[platformSelector] == 9 && previousPlatform != 3)
             {
 
                     if (randomchance < 0.6f)// parce qu'il est bien connu qu'on voit plus souvent monsieur dupont que monsieur niessen
